@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 driver = webdriver.Chrome()
 driver.maximize_window()
 driver.delete_all_cookies()
-driver.get("https://qa.pegdesk.com/")
+driver.get(config.URL)
 print("Project title is: ", driver.title)
 ex_wait = WebDriverWait(driver, 15)
 print("1.Check whether superadmin is able to sign in Successfully with given login ")

@@ -1,4 +1,5 @@
 import time
+import config
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium import webdriver
@@ -6,10 +7,13 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-driver = webdriver.Chrome()
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
+driver.set_page_load_timeout(200)
 driver.maximize_window()
 driver.delete_all_cookies()
-driver.get("https://qa.pegdesk.com/")
+driver.get(config.URL)
 print("Project title is: ", driver.title)
 ex_wait = WebDriverWait(driver, 15)
 print("1.Check whether superadmin is able to sign in Successfully with given login ")
